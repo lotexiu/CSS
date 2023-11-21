@@ -1,24 +1,24 @@
 @keyframes Rainbow {
   0%, 100% {
-    color: rgb(255, 0, 0);
+    color: red;
   }
   8%, 91% {
-    color: rgb(255, 127, 0);
+    color: #ff7f00;
   }
   16%, 83% {
-    color: rgb(255, 255, 0);
+    color: yellow;
   }
   25%, 75% {
-    color: rgb(127, 255, 0);
+    color: chartreuse;
   }
   33%, 66% {
-    color: rgb(0, 255, 0);
+    color: lime;
   }
   41%, 58% {
-    color: rgb(0, 255, 127);
+    color: springgreen;
   }
   50% {
-    color: rgb(0, 255, 255);
+    color: aqua;
   }
 }
 .rainbow {
@@ -31,12 +31,10 @@
   }
 }
 .rainbow-text {
-  width: -moz-fit-content;
   width: fit-content;
   background: linear-gradient(90deg, violet, indigo, blue, green, yellow, orange, red, violet);
   background-size: 200%;
   -webkit-background-clip: text;
-          background-clip: text;
   color: transparent;
   animation: RainbowTextAnimation 6s linear infinite;
 }
@@ -91,67 +89,35 @@
   animation: MoveDrag 2s infinite alternate ease-in-out;
 }
 
-.arrowFade {
-  margin-right: 10px;
-}
-@keyframes Arrow {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-5px, 0px) rotate(45deg);
-  }
-}
-.arrowFade::after, .arrowFade::before {
-  background-image: none !important;
-  content: "";
-  position: absolute;
-  top: 10%;
-  right: -4px;
-  width: 0px !important;
-  height: 0px !important;
-  border: solid 3px white;
-  border-color: white white transparent transparent;
-  padding: 3px;
-  transform: rotate(45deg);
-}
-.arrowFade::before {
-  right: 3px;
-  transform: translate(0px, 0px) rotate(45deg);
-  animation: Arrow 1s infinite ease-in-out;
-}
-
 body {
   margin: 15px;
-  background-color: #1a1a1a;
-}
-body.dark {
-  --bg: #1a1a1a;
-  --text: #ffffff;
-  --highlight: #ffcc00;
+  background-color: var(--bg);
 }
 body div.box {
   border-style: solid;
+  box-shadow: inset 0px 0px 15px 0px var(--highlight);
   padding: 5px;
   margin: 8px 0px;
 }
 body div.title {
   display: flex;
-  width: -moz-fit-content;
   width: fit-content;
   align-items: center;
   border: none;
+  border-radius: 0;
   background-color: var(--bg);
+  box-shadow: 0px 0px 6px 6px var(--bg);
   padding: 0px 10px;
-  height: 15px;
+  height: 20px;
   margin-top: -12px;
+  margin-left: 10px;
   font-size: 20px;
 }
 
 :root {
   --bg: #f3f3f3;
-  --text: #333333;
+  --text: gray;
+  --highlightText: #333333;
   --highlight: #f700ff;
 }
 
@@ -159,9 +125,42 @@ html * {
   border-width: 2px;
   border-radius: 8px;
   border-color: var(--highlight);
-  color: var(--text);
+  color: var(--highlightText);
+}
+html body.dark {
+  --bg: #1a1a1a;
+  --text: lightgray;
+  --highlightText: #ffffff;
+  --highlight: #ffcc00;
+}
+html a {
+  text-decoration: none;
+}
+html a:hover {
+  color: var(--highlight);
+}
+html a:hover * {
+  color: var(--highlight);
 }
 html h1, html h2, html h3, html h4, html h5, html h6 {
-  width: -moz-fit-content;
   width: fit-content;
-}/*# sourceMappingURL=style.css.map */
+  margin: 15px 0px;
+}
+html img {
+  object-position: 50%;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+html p {
+  color: var(--text);
+  font-weight: bold;
+}
+html span {
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.center {
+  margin: auto;
+}
